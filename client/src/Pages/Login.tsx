@@ -15,13 +15,12 @@ export interface loginData {
 
 
 const Login = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<loginData>();
+  const { register, handleSubmit,  formState: { errors } } = useForm<loginData>();
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
 
   const onSubmit = async (data: loginData) => {
-    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.emailOrPhone);
     const loginPayload = {
       identifier: data.emailOrPhone,
       password: data.password,
@@ -49,24 +48,6 @@ const Login = () => {
       <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">Login</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              {...register('email', {
-                validate: value => {
-                  const phone = watch('phone');
-                  return phone || value || 'Either email or phone number is required';
-                },
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: 'Invalid email address',
-                },
-              })}
-              className="w-full px-3 py-1 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-            {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
-          </div> */}
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Email or Phone</label>
@@ -86,21 +67,6 @@ const Login = () => {
   <p className="text-sm text-red-500">{errors.emailOrPhone.message}</p>
 )}
 
-            {/* <input
-              type="tel"
-              {...register('phone', {
-                validate: value => {
-                  const email = watch('email');
-                  return email || value || 'Either phone number or email is required';
-                },
-                pattern: {
-                  value: /^\+?[1-9]\d{1,14}$/,
-                  message: 'Invalid phone number',
-                },
-              })}
-              className="w-full px-3 py-1 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            /> */}
-            {/* {errors.phone && <p className="text-sm text-red-500">{errors.phone.message}</p>} */}
           </div>
 
           <div>

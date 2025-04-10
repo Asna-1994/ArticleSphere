@@ -36,14 +36,14 @@ const RegisterPage: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
 
-  const { register, handleSubmit, watch, control, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit,  control, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(registrationSchema),
     defaultValues: {
       preferences: [] 
     }
   });
 
-  const password = watch('password');
+
   
   useEffect(() => {
     if (isAuthenticated) {
