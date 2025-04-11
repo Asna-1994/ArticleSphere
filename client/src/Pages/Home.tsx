@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
           Login
         </button>
         <button
-          onClick={() => navigate('/signup')}
+          onClick={() => navigate('/register')}
           className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg shadow transition"
         >
        Signup

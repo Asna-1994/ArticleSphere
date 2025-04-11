@@ -42,13 +42,14 @@ export class AuthController {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 15 * 60 * 1000,
-        sameSite: "strict",
+        sameSite: 'none',
+
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        sameSite: "strict",
+        sameSite: 'none',
         path: "/api/auth/refresh",
       });
       res.status(STATUSCODE.CREATED).json({
@@ -115,13 +116,13 @@ res.cookie("accessToken", tokens.accessToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     maxAge: 15 * 60 * 1000,
-    sameSite: "strict",
+    sameSite: 'none',
   });
   res.cookie("refreshToken", tokens.refreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "strict",
+    sameSite: 'none',
     path: "/api/auth/refresh",
   });
 

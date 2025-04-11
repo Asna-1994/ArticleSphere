@@ -15,12 +15,10 @@ export const protect = async (req: AuthRequest, res: Response, next: NextFunctio
   try {
     const token = req.cookies?.accessToken;
 
-
     if (!token) {
       throw new CustomError(ErrorMessages.UNAUTHORIZED_PLEASE_LOGIN,STATUSCODE.UNAUTHORIZED );
     }
 
- 
     const decoded: jwtPayload = jwt.verify(token, config.jwtSecret) as jwtPayload
 
 
