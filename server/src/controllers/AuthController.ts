@@ -44,13 +44,13 @@ export class AuthController {
       );
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV==='production',
+        secure: true,
         maxAge: 15 * 60 * 1000,
         sameSite: "none",
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV==='production',
+        secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         sameSite: "none",
         path: "/api/auth/refresh",
@@ -117,13 +117,13 @@ if(!refreshToken){
 const tokens = await authService.refreshToken(refreshToken)
 res.cookie("accessToken", tokens.accessToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV==='production',
+    secure: true,
     maxAge: 15 * 60 * 1000,
     sameSite: "none",
   });
   res.cookie("refreshToken", tokens.refreshToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV==='production',
+    secure: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     sameSite: "none",
     path: "/api/auth/refresh",
