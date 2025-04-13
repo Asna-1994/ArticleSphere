@@ -8,7 +8,6 @@ interface AuthState {
 
 const initialState: AuthState = {
   user: null,
-
   isAuthenticated: false,
 };
 
@@ -17,14 +16,16 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     userLogin: (state, action: PayloadAction<any>) => {
-      (state.user = action.payload.user), (state.isAuthenticated = true);
+      state.user = action.payload.user,
+       state.isAuthenticated = true;
     },
+
     updateUser: (state, action: PayloadAction<any>) => {
-      console.log(action.payload.user);
       state.user = action.payload.user;
     },
     logOut: (state) => {
-      (state.user = null), (state.isAuthenticated = false);
+      state.user = null,
+       state.isAuthenticated = false;
     },
   },
 });

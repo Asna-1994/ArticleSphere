@@ -40,16 +40,15 @@ export class AuthController {
       );
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
         maxAge: 15 * 60 * 1000,
-        sameSite: 'none',
-
+        sameSite: "strict",
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        sameSite: 'none',
+        sameSite: "strict",
         path: "/api/auth/refresh",
       });
       res.status(STATUSCODE.CREATED).json({
@@ -114,15 +113,15 @@ if(!refreshToken){
 const tokens = await authService.refreshToken(refreshToken)
 res.cookie("accessToken", tokens.accessToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     maxAge: 15 * 60 * 1000,
-    sameSite: 'none',
+    sameSite: "strict",
   });
   res.cookie("refreshToken", tokens.refreshToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: 'none',
+    sameSite: "strict",
     path: "/api/auth/refresh",
   });
 
