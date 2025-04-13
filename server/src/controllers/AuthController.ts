@@ -1,14 +1,18 @@
+import { config } from './../config/basicConfig';
 import { NextFunction, Response } from "express";
 import { ErrorMessages, SuccessMessages } from "../constants/Messages";
 import { AuthRequest } from "../middlewares/authMiddleware";
 import { authService } from "../services/AuthService";
 import { STATUSCODE } from "../constants/StatusCodes";
+import dotenv from 'dotenv'
 import {
   ChangePasswordDto,
   LoginUserDto,
   RegisterUserDto,
 } from "../dto/AuthDto";
 import { CustomError } from "../middlewares/errorHandler";
+
+dotenv.config()
 
 export class AuthController {
   async register(
@@ -40,13 +44,13 @@ export class AuthController {
       );
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV==='production',
         maxAge: 15 * 60 * 1000,
         sameSite: "none",
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV==='production',
         maxAge: 7 * 24 * 60 * 60 * 1000,
         sameSite: "none",
         path: "/api/auth/refresh",
@@ -113,13 +117,13 @@ if(!refreshToken){
 const tokens = await authService.refreshToken(refreshToken)
 res.cookie("accessToken", tokens.accessToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV==='production',
     maxAge: 15 * 60 * 1000,
     sameSite: "none",
   });
   res.cookie("refreshToken", tokens.refreshToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV==='production',
     maxAge: 7 * 24 * 60 * 60 * 1000,
     sameSite: "none",
     path: "/api/auth/refresh",
