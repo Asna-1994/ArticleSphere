@@ -1,7 +1,6 @@
 import express ,{Application, Request, Response, NextFunction} from "express";
 import dotenv from 'dotenv'
 import cors from 'cors'
-import helmet from "helmet";
 import morgan from 'morgan'
 import {config} from './config/basicConfig'
 import { errorHandler } from "./middlewares/errorHandler";
@@ -20,7 +19,6 @@ import categoryRoutes from './routes/categoryRoutes'
 const app :Application = express()
 
 
-app.use(helmet());
 app.use(
     cors({
       origin: process.env.FRONTEND_URL,
@@ -31,6 +29,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(config.nodeEnv === 'development' ? 'dev' : 'combined'));
 app.use(cookieParser())
+
+
+app.get('/healthz', (req: Request, res: Response) => {
+  res.status(STATUSCODE.OK).json({
+    success : true,
+    message : 'ok'
+  })
+});
+
+
+app.get('/', (req: Request, res: Response) => {
+  res.status(STATUSCODE.OK).json({
+    success : true,
+    message : 'Welcome to the Blog API!'
+  })
+});
 
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
