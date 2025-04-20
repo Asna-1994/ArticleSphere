@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Components/Header';
+import Header from '../../Components/Header/Header';
 import { useSelector } from 'react-redux';
 import DashboardPage from './Dashboard';
-import { RootState } from '../Redux/store';
+import { RootState } from '../../Redux/store';
 
 
 

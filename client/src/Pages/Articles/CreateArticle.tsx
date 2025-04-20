@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { X } from 'lucide-react';
-import Header from '../../Components/Header';
+import Header from '../../Components/Header/Header';
 import { RootState } from '../../Redux/store';
 import { Category } from '../../Interfaces/interfaces';
 import { getAllCategories } from '../../services/categoryService';

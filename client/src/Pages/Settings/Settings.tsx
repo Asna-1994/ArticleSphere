@@ -1,11 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import Header from "../Components/Header";
+import Header from "../../Components/Header/Header";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
-import { updateUserData } from "../services/userServices";
+import { RootState } from "../../Redux/store";
+import { updateUserData } from "../../services/userServices";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../Redux/slices/authSlice";
+import { updateUser } from "../../Redux/slices/authSlice";
 
 export interface updateProfileData {
     firstName?: string;

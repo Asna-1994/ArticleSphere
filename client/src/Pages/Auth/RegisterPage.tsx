@@ -4,15 +4,15 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import Header from "../Components/Header";
+import Header from '../../Components/Header/Header';
 import toast from "react-hot-toast";
-import { registerService } from "../services/authServices";
+import { registerService } from '../../services/authServices';
 import { useSelector } from 'react-redux';
-import { RootState } from '../Redux/store';
-import { getAllCategories } from '../services/categoryService';
+import { RootState } from '../../Redux/store';
+import { getAllCategories } from '../../services/categoryService';
 import { Eye, EyeOff } from "lucide-react";
-import { Category } from '../Interfaces/interfaces';
-import { registrationSchema } from '../utils/schema';
+import { Category } from '../../Interfaces/interfaces';
+import { registrationSchema } from '../../utils/schema';
 
 
 interface FormData {

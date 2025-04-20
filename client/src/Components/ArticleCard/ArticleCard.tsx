@@ -1,8 +1,7 @@
-
 import { Ban, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import { Article } from '../Dashboard';
+import { Article } from '../../Pages/DashBoard/Dashboard';
 
 export interface ArticleCardProps {
   article: Article;

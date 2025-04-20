@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import Header from "../Components/Header";
-import { updatePassword } from "../services/authServices";
+import Header from "../../Components/Header/Header";
+import { updatePassword } from "../../services/authServices";
 
 export interface updatePasswordData {
   currentPassword?: string;

@@ -2,11 +2,11 @@
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import Header from '../../Components/Header';
+import Header from '../../Components/Header/Header';
 import { ThumbsUp, ThumbsDown, Ban } from 'lucide-react';
 import { useState } from 'react';
 import { deleteArticleService } from '../../services/articleService';
-import { Article } from '../Dashboard';
+import { Article } from '../DashBoard/Dashboard';
 import { imageObject } from './MyArticles';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';

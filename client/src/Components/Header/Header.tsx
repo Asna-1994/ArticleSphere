@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../Redux/store";
+import { RootState } from "../../Redux/store";
 import { Link, useNavigate } from "react-router-dom";
-import { logoutService } from "../services/authServices";
+import { logoutService } from "../../services/authServices";
 import toast from "react-hot-toast";
-import { logOut } from "../Redux/slices/authSlice";
+import { logOut } from "../../Redux/slices/authSlice";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 

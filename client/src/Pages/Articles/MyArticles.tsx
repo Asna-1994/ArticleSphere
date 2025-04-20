@@ -1,9 +1,9 @@
 import  { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import Header from '../../Components/Header';
+import Header from '../../Components/Header/Header';
 import { getUserArticles } from '../../services/articleService';
-import ArticleCard from './ArticleCard';
-import { Article } from '../Dashboard';
+import ArticleCard from '../../Components/ArticleCard/ArticleCard';
+import { Article } from '../DashBoard/Dashboard';
 
 export interface imageObject {
     

@@ -1,10 +1,10 @@
 import React, {  useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../Components/Header";
+import Header from "../../Components/Header/Header";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
-import { imageObject } from "./Articles/MyArticles";
-import useArticle from "../CustomHooks/useArticle";
+import { RootState } from "../../Redux/store";
+import { imageObject } from "../Articles/MyArticles";
+import useArticle from "../../CustomHooks/useArticle";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 

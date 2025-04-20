@@ -1,11 +1,10 @@
-
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { loginService } from '../services/authServices';
-import Header from '../Components/Header';
+import Header from '../../Components/Header/Header';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '../Redux/slices/authSlice';
+import { userLogin } from '../../Redux/slices/authSlice';
+import { loginService } from '../../services/authServices';
 
 
 export interface loginData {

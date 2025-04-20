@@ -1,14 +1,13 @@
-
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import Header from "../Components/Header";
+import Header from "../../Components/Header/Header";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
-import { getAllCategories } from "../services/categoryService";
-import { Category } from "../Interfaces/interfaces";
-import { updateUserPreferences } from "../services/userServices";
+import { RootState } from "../../Redux/store";
+import { getAllCategories } from "../../services/categoryService";
+import { Category } from "../../Interfaces/interfaces";
+import { updateUserPreferences } from "../../services/userServices";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../Redux/slices/authSlice";
+import { updateUser } from "../../Redux/slices/authSlice";
 
 const PreferencesPage = () => {
   const { user, isAuthenticated } = useSelector((state: RootState) => state.auth);

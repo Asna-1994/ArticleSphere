@@ -1,5 +1,5 @@
 import axiosInstance from "../Instance/axiosInstance";
-import { updateProfileData } from "../Pages/Settings";
+import { updateProfileData } from "../Pages/Settings/Settings";
 
 
 export const updateUserData = async(data :updateProfileData) => {

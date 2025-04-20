@@ -1,6 +1,6 @@
 import axiosInstance from "../Instance/axiosInstance";
 import { registerData } from "../Interfaces/interfaces";
-import { updatePasswordData } from "../Pages/UpdatePassword";
+import { updatePasswordData } from "../Pages/Settings/UpdatePassword";
 
 export const registerService = async(data : registerData) => {
     try{

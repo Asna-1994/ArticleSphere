@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import { Article } from '../Pages/Dashboard';
+import { Article } from '../Pages/DashBoard/Dashboard';
 import { blockArticle, disLikeArticle, getAllArticles, likeArticle } from '../services/articleService';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
