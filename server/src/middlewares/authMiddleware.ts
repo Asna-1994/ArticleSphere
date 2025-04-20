@@ -5,7 +5,7 @@ import User from '../entities/User';
 import { ErrorMessages } from '../constants/Messages';
 import { CustomError } from './errorHandler';
 import { STATUSCODE } from '../constants/StatusCodes';
-import { jwtPayload } from '../services/AuthService';
+import { jwtPayload } from '../Interfaces/AuthInterface';
 
 export interface AuthRequest extends Request {
   user?: any;
@@ -24,7 +24,7 @@ export const protect = async (req: AuthRequest, res: Response, next: NextFunctio
 
     const user = await User.findById(decoded.id);
     if (!user) {
-      throw new CustomError('The user belonging to this token no longer exists.', STATUSCODE.UNAUTHORIZED);
+      throw new CustomError(ErrorMessages.DOES_NOT_EXISTS, STATUSCODE.UNAUTHORIZED);
     }
     req.user = user;
     next();

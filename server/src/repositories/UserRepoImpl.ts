@@ -1,12 +1,10 @@
-import { BaseRepository } from './BaseRepository';
-import User, { IUser } from '../entities/User';
+import User, { IUser } from "../entities/User";
+import { IUserRepository } from "../Interfaces/UserRepo";
+import { BaseRepository } from "./BaseRepoImpl";
 
-export interface IUserRepository extends BaseRepository<IUser> {
-  findByEmail(email: string): Promise<IUser | null>;
-  findByPhone(phone: string): Promise<IUser | null>;
-  updatePreferences(userId: string, preferences: string[]): Promise<IUser | null>;
-  findByIdWithPassword(id: string): Promise<IUser | null>; 
-}
+
+
+
 
 export class UserRepository extends BaseRepository<IUser> implements IUserRepository {
   constructor() {
@@ -36,4 +34,3 @@ export class UserRepository extends BaseRepository<IUser> implements IUserReposi
   }
 }
 
-export const userRepository = new UserRepository();

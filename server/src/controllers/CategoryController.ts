@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { categoryService } from '../services/CategoryService';
 import { STATUSCODE } from '../constants/StatusCodes';
+import { categoryService } from '../config/container';
 
 export class CategoryController {
   async getAllCategories(req: Request, res: Response, next: NextFunction): Promise<void> {

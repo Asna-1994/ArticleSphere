@@ -1,16 +1,15 @@
-import { BaseRepository } from './BaseRepository';
-import Article, { IArticle } from '../entities/Article';
-import mongoose from 'mongoose';
-import User from '../entities/User';
 
-export interface IArticleRepository extends BaseRepository<IArticle> {
-  findByAuthor(authorId: string): Promise<IArticle[]>;
-  findByCategory(categoryId: string): Promise<IArticle[]>;
-  findByPreferences(userId : string, skip : number, limit  : number): Promise<{articles: IArticle[]; total: number}>;
-  likeArticle(articleId: string, userId: string): Promise<IArticle | null>;
-  dislikeArticle(articleId: string, userId: string): Promise<IArticle | null>;
-  blockArticle(articleId: string, userId: string): Promise<IArticle | null>;
-}
+
+import mongoose from 'mongoose';
+import Article, { IArticle } from '../entities/Article';
+
+import User from '../entities/User';
+import { BaseRepository } from './BaseRepoImpl';
+import { IArticleRepository } from '../Interfaces/ArticleRepo';
+
+
+
+
 
 export class ArticleRepository extends BaseRepository<IArticle> implements IArticleRepository {
   constructor() {
@@ -109,4 +108,3 @@ export class ArticleRepository extends BaseRepository<IArticle> implements IArti
   }
 }
 
-export const articleRepository = new ArticleRepository();

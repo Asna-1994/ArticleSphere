@@ -1,23 +1,33 @@
-import { articleRepository } from '../repositories/ArticleRepository';
-import {   CustomError } from '../middlewares/errorHandler';
-import { CreateArticleDto, UpdateArticleDto } from '../dto/ArticleDto';
-import  { IArticle } from '../entities/Article';
-import { STATUSCODE } from '../constants/StatusCodes';
-import { ErrorMessages } from '../constants/Messages';
-import { deleteFromCloudinary } from '../config/cloudinaryConfig';
+
 import mongoose from 'mongoose';
+import { CreateArticleDto, UpdateArticleDto } from '../dto/ArticleDto';
+import { IArticle } from '../entities/Article';
+import { CustomError } from '../middlewares/errorHandler';
+import { ErrorMessages } from '../constants/Messages';
+import { STATUSCODE } from '../constants/StatusCodes';
+import { deleteFromCloudinary } from '../config/cloudinaryConfig';
+import { IArticleRepository } from '../Interfaces/ArticleRepo';
+import { IArticleService } from '../Interfaces/ArticleServiceInterface';
 
 
-export class ArticleService {
+
+export class ArticleService implements IArticleService {
+  private articleRepository: IArticleRepository;
+
+  constructor(articleRepository: IArticleRepository) {
+    this.articleRepository = articleRepository;
+  }
+
+  
   async createArticle(authorId: string, articleData: CreateArticleDto): Promise<IArticle> {
-    return articleRepository.create({
+    return this.articleRepository.create({
       ...articleData,
       author: authorId
     });
   }
 
   async getArticleById(articleId: string): Promise<IArticle> {
-    const article = await articleRepository.findById(articleId);
+    const article = await this.articleRepository.findById(articleId);
     if (!article) {
       throw new CustomError(ErrorMessages.ARTICLE_NOT_FOUND, STATUSCODE.NOT_FOUND);
     }
@@ -25,11 +35,11 @@ export class ArticleService {
   }
 
   async getUserArticles(userId: string): Promise<IArticle[]> {
-    return articleRepository.findByAuthor(userId);
+    return this.articleRepository.findByAuthor(userId);
   }
 
-  async getArticlesByPreferences(userId: string, skip = 0, limit = 10) {
-    return articleRepository.findByPreferences(userId, skip, limit);
+  async getArticlesByPreferences(userId: string, skip = 0, limit = 10)  {
+    return this.articleRepository.findByPreferences(userId, skip, limit);
   }
   
 
@@ -39,7 +49,7 @@ export class ArticleService {
     data: UpdateArticleDto & { newImageUrls?: { url: string; publicId: string }[] },
     removedImages: { publicId: string }[]
   ): Promise<IArticle> {
-    const article = await articleRepository.findById(articleId);
+    const article = await this.articleRepository.findById(articleId);
     if (!article) throw new Error('Article not found');
     if (article.author.toString() !== authorId.toString()) throw new Error('Unauthorized');
   
@@ -73,7 +83,7 @@ export class ArticleService {
 
   async deleteArticle(articleId: string, authorId: string): Promise<void> {
 
-    const article = await articleRepository.findById(articleId);
+    const article = await this.articleRepository.findById(articleId);
     
     if (!article) {
       throw new CustomError(ErrorMessages.ARTICLE_NOT_FOUND, STATUSCODE.NOT_FOUND);
@@ -90,7 +100,7 @@ export class ArticleService {
         )
       );
     }
-    const deleted = await articleRepository.delete(articleId);
+    const deleted = await this.articleRepository.delete(articleId);
     
     if (!deleted) {
       throw new CustomError('Failed to delete article', STATUSCODE.NOT_FOUND);
@@ -100,7 +110,7 @@ export class ArticleService {
 
 
   async likeArticle(articleId: string, userId: string): Promise<IArticle> {
-    const article = await articleRepository.likeArticle(articleId, userId);
+    const article = await this.articleRepository.likeArticle(articleId, userId);
     
     if (!article) {
       throw new CustomError(ErrorMessages.ARTICLE_NOT_FOUND, STATUSCODE.NOT_FOUND);
@@ -110,7 +120,7 @@ export class ArticleService {
   }
 
   async dislikeArticle(articleId: string, userId: string): Promise<IArticle> {
-    const article = await articleRepository.dislikeArticle(articleId, userId);
+    const article = await this.articleRepository.dislikeArticle(articleId, userId);
     
     if (!article) {
       throw new CustomError(ErrorMessages.ARTICLE_NOT_FOUND, STATUSCODE.NOT_FOUND);
@@ -120,7 +130,7 @@ export class ArticleService {
   }
 
   async blockArticle(articleId: string, userId: string): Promise<IArticle> {
-    const article = await articleRepository.blockArticle(articleId, userId);
+    const article = await this.articleRepository.blockArticle(articleId, userId);
     
     if (!article) {
       throw new CustomError(ErrorMessages.ARTICLE_NOT_FOUND, STATUSCODE.NOT_FOUND);
@@ -130,4 +140,3 @@ export class ArticleService {
   }
 }
 
-export const articleService = new ArticleService();

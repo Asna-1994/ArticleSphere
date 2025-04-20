@@ -1,5 +1,8 @@
 import { Model, Document } from 'mongoose';
-import { IBaseRepository } from '../interfaces/BaseRepository';
+import { IBaseRepository } from '../Interfaces/BaseRepo';
+
+
+
 
 export class BaseRepository<T extends Document> implements IBaseRepository<T> {
   private _model: Model<T>;
@@ -23,6 +26,12 @@ export class BaseRepository<T extends Document> implements IBaseRepository<T> {
   async update(id: string, item: any): Promise<T | null> {
     return this._model.findByIdAndUpdate(id, item, { new: true }).exec();
   }
+
+
+    async save(item: T): Promise<T> {
+        return item.save();
+      }
+  
 
   async delete(id: string): Promise<boolean> {
     const result = await this._model.findByIdAndDelete(id).exec();

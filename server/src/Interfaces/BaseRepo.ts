@@ -6,4 +6,6 @@ export interface IBaseRepository<T extends Document> {
   create(item: any): Promise<T>;
   update(id: string, item: any): Promise<T | null>;
   delete(id: string): Promise<boolean>;
+  save(item: T): Promise<T>;
+
 }

@@ -12,7 +12,8 @@ export const ErrorMessages = {
      INTERNAL_SERVER_ERROR : 'Internal server error',
      ARTICLE_NOT_FOUND  : 'Article not found',
      CATEGORY_NOT_FOUND : "Category not found",
-     NOT_FOUND : 'Resource not found'
+     NOT_FOUND : 'Resource not found',
+       DOES_NOT_EXISTS : 'The user belonging to this token no longer exists.'
 };
   
 
@@ -21,6 +22,9 @@ export const ErrorMessages = {
   FETCHED_USER : 'Successfully fetched user profile',
   UPDATED_USER : "Updated user profile",
   UPDATED_USER_PREFERENCES : "Updated user preferences",
+  DELETE_SUCCESS : "Deleted successfully",
+  LOGGED_OUT_SUCCESS : 'Successfully logged out',
+
 
   };
   

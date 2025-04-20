@@ -1,8 +1,6 @@
-import { config } from './../config/basicConfig';
 import { NextFunction, Response } from "express";
 import { ErrorMessages, SuccessMessages } from "../constants/Messages";
 import { AuthRequest } from "../middlewares/authMiddleware";
-import { authService } from "../services/AuthService";
 import { STATUSCODE } from "../constants/StatusCodes";
 import dotenv from 'dotenv'
 import {
@@ -11,6 +9,7 @@ import {
   RegisterUserDto,
 } from "../dto/AuthDto";
 import { CustomError } from "../middlewares/errorHandler";
+import { authService } from "../config/container";
 
 dotenv.config()
 
@@ -79,7 +78,7 @@ export class AuthController {
       res.clearCookie("refreshToken", { path: "/api/auth/refresh" });
       res.status(STATUSCODE.CREATED).json({
         success: true,
-        message: "Successfully logged out",
+        message: SuccessMessages.LOGGED_OUT_SUCCESS,
       });
     } catch (err) {
       next(err);

@@ -1,8 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import { articleService } from '../services/ArticleService';
 import { AuthRequest } from '../middlewares/authMiddleware';
 import { STATUSCODE } from '../constants/StatusCodes';
 import { uploadToCloudinary } from '../config/cloudinaryConfig';
+import { articleService } from '../config/container';
+import { SuccessMessages } from '../constants/Messages';
+
+
 
 export class ArticleController {
   async createArticle(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
@@ -138,7 +141,7 @@ export class ArticleController {
 
       res.status(204).json({
         success : true,
-        message : 'deleted successfully'
+        message : SuccessMessages.DELETE_SUCCESS
       });
     } catch (error) {
       next(error);

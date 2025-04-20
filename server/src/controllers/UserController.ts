@@ -3,8 +3,9 @@ import { NextFunction,  Response } from "express";
 import { AuthRequest } from "../middlewares/authMiddleware";
 import { STATUSCODE } from "../constants/StatusCodes";
 import { UpdateUserDto } from "../dto/UserDto";
-import { userService } from "../services/UserService";
 import { SuccessMessages } from "../constants/Messages";
+import { userService } from "../config/container";
+
 
 export class UserController {
   async getProfile(
