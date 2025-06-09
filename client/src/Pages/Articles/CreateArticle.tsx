@@ -580,9 +580,6 @@ const CreateArticle = () => {
     {...register('content')}
     rows={6}
     maxLength={280}
-    onChange={(e) => {
-      // Optional: you can track length in state if you want
-    }}
     className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-colors duration-200"
   />
   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
