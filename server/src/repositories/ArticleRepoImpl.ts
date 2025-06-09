@@ -1,11 +1,9 @@
-
-
 import mongoose from 'mongoose';
 import Article, { IArticle } from '../entities/Article';
-
 import User from '../entities/User';
 import { BaseRepository } from './BaseRepoImpl';
 import { IArticleRepository } from '../Interfaces/ArticleRepo';
+
 
 
 

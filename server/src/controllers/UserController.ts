@@ -25,6 +25,7 @@ export class UserController {
     }
   }
 
+  //update profile
   async updateProfile(
     req: AuthRequest,
     res: Response,
@@ -46,6 +47,7 @@ export class UserController {
     }
   }
 
+  //update preference 
   async updatePreferences(
     req: AuthRequest,
     res: Response,
@@ -55,9 +57,7 @@ export class UserController {
       const updatePreferenceData = req.body;
       console.log(updatePreferenceData)
 
-      const updatedUser = await userService.updatePreferences(
-        req.user._id,
-        updatePreferenceData
+      const updatedUser = await userService.updatePreferences(req.user._id,updatePreferenceData
       );
       res.status(STATUSCODE.OK).json({
         success: true,
