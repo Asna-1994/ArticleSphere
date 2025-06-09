@@ -53,10 +53,10 @@ const DashboardPage: React.FC = () => {
     hasUserLiked, handleBlock, formatDate, closeModal, handleDislike,
     handleLike, setHasMore, setCurrentPage, fetchArticles,
     blockedArticles, currentPage, isLoading,
-    selectedArticle, hasMore // Make sure this is available from your useArticle hook
+    selectedArticle, hasMore 
   } = useArticle()
 
-  // Handle scroll for back to top button
+
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
