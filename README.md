@@ -1,6 +1,7 @@
 # Full Stack Application - ArticleSphere
 
-This repository contains both the frontend client (React/TypeScript/Vite) and backend server (Node.js/TypeScript) for the ArticleSphere application.
+This repository contains both the frontend client (React/TypeScript/Vite) and the backend server (Node.js/TypeScript) for the **ArticleSphere** application.
+
 
 ## Live Deployment
 
@@ -17,9 +18,9 @@ This repository contains both the frontend client (React/TypeScript/Vite) and ba
 ## Client (Frontend)
 
 ### Technologies Used
-- React
 - TypeScript
 - Vite
+
 
 ### Getting Started
 
@@ -29,17 +30,18 @@ This repository contains both the frontend client (React/TypeScript/Vite) and ba
 
 #### Installation
 1. Clone the repository
-```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository/client
-```
+
+git clone https://github.com/Asna-1994/ArticleSphere
+cd ArticleSphere/client
+
+
 
 2. Install dependencies
-```bash
+
 npm install
 # or
 yarn
-```
+
 
 3. Create a `.env` file in the client directory with the following variables:
 ```
@@ -47,18 +49,18 @@ VITE_API_URL=http://localhost:8000/api
 ```
 
 4. Start the development server
-```bash
+
 npm run dev
 # or
 yarn dev
-```
+
 
 ### Building for Production
-```bash
+
 npm run build
 # or
 yarn build
-```
+
 This will generate a `dist` folder with all the built assets.
 
 ### Deployment on Vercel
@@ -74,12 +76,7 @@ To deploy your own version:
    - `VITE_API_URL`: Your production API URL (e.g., https://articlesphere-server.onrender.com/api)
 5. Deploy
 
-### Testing
-```bash
-npm run test
-# or
-yarn test
-```
+
 
 ## Server (Backend)
 
@@ -87,28 +84,29 @@ yarn test
 - Node.js
 - Express
 - TypeScript
-- MongoDB (assumed - adjust if using a different database)
+- MongoDB 
 
 ### Getting Started
 
 #### Prerequisites
 - Node.js (v14 or later)
 - npm or yarn
-- MongoDB (local or Atlas connection)
+- MongoDB 
 
 #### Installation
 1. Clone the repository
-```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository/server
-```
+
+git clone https://github.com/Asna-1994/ArticleSphere
+cd ArticleSphere/server
+
+
 
 2. Install dependencies
-```bash
+
 npm install
 # or
 yarn
-```
+
 
 3. Create a `.env` file in the server directory with the following variables:
 ```
@@ -119,18 +117,18 @@ NODE_ENV=development
 ```
 
 4. Start the development server
-```bash
+
 npm run dev
 # or
 yarn dev
-```
+
 
 ### Building for Production
-```bash
+
 npm run build
 # or
 yarn build
-```
+
 This will generate a `dist` folder with the compiled JavaScript files.
 
 ### Deployment on Render
@@ -146,18 +144,10 @@ To deploy your own version:
 5. Add all environment variables from your `.env` file
 6. Deploy
 
-### API Documentation
+
 
 #### Base URL
 - Development: http://localhost:8000/api
 - Production: https://articlesphere-server.onrender.com/api
 
 
-
-
-### Testing
-```bash
-npm run test
-# or
-yarn test
-```
