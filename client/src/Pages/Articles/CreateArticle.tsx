@@ -342,7 +342,9 @@ const MAX_IMAGE_SIZE_MB = 5;
 const schema = Yup.object().shape({
   title: Yup.string().required('Article title is required'),
   description: Yup.string().required('Description is required'),
-  content: Yup.string().required('Content is required'),
+  content: Yup.string()
+    .required('Content is required')
+    .max(280, 'Content must be at most 280 characters'),
   category: Yup.string().required('Please select a category'),
   tags: Yup.string().required('Tags are required'),
 });
@@ -554,7 +556,7 @@ const CreateArticle = () => {
           </div>
 
           {/* Content */}
-          <div>
+          {/* <div>
             <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200">
               Full Content
             </label>
@@ -568,7 +570,31 @@ const CreateArticle = () => {
                 {errors.content.message}
               </p>
             )}
-          </div>
+          </div> */}
+          {/* Content */}
+<div>
+  <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200">
+    Full Content
+  </label>
+  <textarea
+    {...register('content')}
+    rows={6}
+    maxLength={280}
+    onChange={(e) => {
+      // Optional: you can track length in state if you want
+    }}
+    className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-colors duration-200"
+  />
+  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+    Max 280 characters
+  </p>
+  {errors.content && (
+    <p className="text-red-500 dark:text-red-400 text-sm mt-1 transition-colors duration-200">
+      {errors.content.message}
+    </p>
+  )}
+</div>
+
 
           {/* Category */}
           <div>
